@@ -1,0 +1,33 @@
+<mat-card>
+  <div class="header">
+    <img src="../assets/logo.png" alt="logo" class="logo">
+    <h1 class="title">Informe o número para ter a sequência</h1>
+  </div>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Digite o número" [(ngModel)]="numero" type="number" min="1" required>
+      <mat-error *ngIf="numero !== undefined && numero < 1">O valor deve ser maior ou igual a 1</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="consultarSequencia()">Consultar</button>
+    <button mat-raised-button color="warn" (click)="limpar()">Limpar</button>
+    <br>
+    <br>
+    <div *ngIf="resultado" class="resultado">
+      <p>Resultado:</p>
+      <mat-card>
+        <mat-card-content>
+          {{ resultado }}
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div *ngIf="erro" class="erro">
+      <p>Erro:</p>
+      <mat-card>
+        <mat-card-content>
+          {{ erro }}
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
